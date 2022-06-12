@@ -1,1 +1,0 @@
-# konkonsa_plug

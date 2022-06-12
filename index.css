@@ -1,0 +1,104 @@
+* {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+@keyframes bouncing {
+    0% {bottom: 0; box-shadow: 0 0 rgba(0, 0, 0, 0.1); }
+    50% {bottom: 20px; box-shadow: -20px -20px rgb(12, 1, 53);}
+    100% {bottom: 50px; box-shadow: 20px 20px rgb(0, 0, 0);}
+}
+@keyframes coloring {
+    0% {color: chartreuse;}
+    5% {color: crimson;}
+    10% {color: palevioletred;}
+    15% {color: mediumaquamarine;}
+    20% {color: darkred;}
+    25% {color: darkmagenta;}
+    30% {color: gold;}
+    35% {color: white;}
+    40% {color: green;}
+    45% {color: gray;}
+    50% {color: blue;}
+    55% {color: antiquewhite}
+    60% {color: brown;}
+    65% {color: chartreuse;}
+    70% {color: darkslateblue;}
+    75% {color: fuchsia;}
+    80% {color: black;}
+    85% {color: hotpink;}
+    90% {color: indigo;}
+    95% {color: khaki;}
+    100% {color: lightseagreen;}
+}
+.brand h2 {
+    color: rgb(25, 2, 107);
+}
+img {
+    margin: 50px 50px 0;
+    position: relative;
+    border: yellow 2px solid;
+    height: 400px;
+    width: 80%;
+    border-radius: 20px;
+    animation: bouncing 1s linear 0s infinite alternate both;
+    -webkit-animation: bouncing 1s linear 0s infinite alternate both;
+}
+.content{
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+}
+.form-box{
+    width: 96%;
+    min-height: 100px;
+    position: relative;
+    margin: 2% auto;
+    background-color: #c0c0c0;
+    padding: 5px;
+    border-radius: 30px;
+}
+#bd-msg {
+    margin: 20px auto;
+    border-radius: 30px;
+    width: 90%;
+    background: linear-gradient(to right, green, black);
+    padding-top: 20px;
+    font-size: 1.2em;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    color: white;
+}
+button {
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+    background:  linear-gradient(to right, green, black);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+    color: white;
+}
+button i {
+    color: blueviolet;
+    padding: 8px;
+}
+.conts {
+    display: inline;
+}
+.survey a {
+    text-decoration: none;
+    animation: coloring 10s linear 0s infinite alternate both;
+    -webkit-animation: coloring 10s linear 0s infinite alternate both;
+}
+.log-head h2 {
+    animation: coloring 10s linear 0s infinite alternate both;
+}
+.hr-class {
+    border: 5px solid black;
+}
