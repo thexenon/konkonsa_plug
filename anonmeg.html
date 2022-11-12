@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="This is the official anonymous message site of Konkonsa Plug (TAB 3)...">
+	<title>Konkonsa Plug</title>
+	<link rel="stylesheet" href="index.css">
+	<script src="https://kit.fontawesome.com/6401c6b42b.js" crossorigin="anonymous"></script>
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	 
+	
+	<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-storage.js"></script>
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+	<script>
+		// Your web app's Firebase configuration
+		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+		var firebaseConfig = {
+		  apiKey: "AIzaSyAT0VOEE4NJp9s1pSKDBDTK7ijJm4yJSQY",
+		  authDomain: "aaaa-6af4b.firebaseapp.com",
+		  databaseURL: "https://aaaa-6af4b.firebaseio.com",
+		  projectId: "aaaa-6af4b",
+		  storageBucket: "aaaa-6af4b.appspot.com",
+		  messagingSenderId: "152354258062",
+		  appId: "1:152354258062:web:773082156bced0ef801ddf",
+		  measurementId: "G-M264BJ46QZ"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+
+		var counter = 100000000000000000;
+	  </script>
+	  
+      
+    <div class="brand">
+        <h2>The <br>Konkonsa <br>Plug</h2>
+        <!--<img src="a0.jpg" alt="">-->
+    </div>
+	<div>
+		<div class="content">
+			<div class="form-box">         
+			<form id="bd-wish" class="input-group">
+				<textarea id="bd-msg" cols="30" rows="5" placeholder="Write an anonymous message..."></textarea>
+                <div class="form-group">
+                    <div class="progress bg-secondary">
+                        <div id="upload-progress" class="progress-bar bg-success" style="width: 0%;">0%</div>
+                    </div>
+                </div>
+				<div>
+					<button id="save-msg" type="button">Send your message <i class="fas fa-envelope"></i></button>
+				</div>
+			</form>
+			<div id="result"></div>
+			</div>
+		</div>
+	</div><br><br><br><hr class="hr-class"><br><br><br><!--
+	<div>
+		<h2 class="survey">
+			<a href="https://docs.google.com/forms/d/e/1FAIpQLSetDcEG7TvylMQyQ9iXA61ZVYLq2POyvSLSMu_CkKXLqjq8ug/viewform?usp=sf_link" target="_blank">
+				Please Click Me To Give Your Views About KYCM
+				<i class="fas fa-hand-peace" style="padding: 0 10px;"></i>
+			</a>
+		</h2>
+	</div>--><br><br><hr class="hr-class"><br>
+
+
+
+	<script>
+		$("#save-msg").click(function(){
+			var msg = $("#bd-msg").val();
+			var dateStr = new Date().getTime();
+			var time = new Date();
+            var option = {
+                       weekday: "long",
+                       month: "long",
+                       day: "2-digit",
+					   year: "numeric",
+			}
+			var databaseRef = firebase.database().ref().child("KonkonsaPlug");
+			var blogData = {
+				"anon": msg,
+				"count": counter - dateStr,
+                "time": time.toLocaleString('en-US', {hours: 'numeric', minutes: 'numeric', seconds: 'numeric', hours12: true}),
+                "date": time.toLocaleDateString('en-US', option),
+			};
+	
+			var newPostRef = databaseRef.push();
+			if (msg != "") {
+				newPostRef.set(blogData, function(err){
+								if (!err){
+									$("#result").attr("class", "alert alert-success");
+									$("#result").html("Message has been uploaded successfully...!");
+									$("#bd-wish")[0].reset();
+
+									window.location.assign("index.html");
+									
+									
+								} else {
+									$("#result").attr("class", "alert alert-danger");
+									$("#result").html("An error occuried in the upload of your post...!");
+								}
+				});
+			} else {
+				$("#result").html("Please write a message...!");
+			}
+		});
+	
+		
+	
+	
+		// var dbBlogs = firebase.database().ref().child("KonkonsaPlug").orderByChild("count");
+		// dbBlogs.on("value", function(blogs){
+		// 	if (blogs.exists()){
+		// 		var blogsHtml = "";
+		// 		blogs.forEach(function(singleBlog){
+		// 			counter = counter + 1;
+		// 			blogsHtml += "<div>"
+		// 				blogsHtml += "<p style='border: 2px solid black; border-radius: 30px; width: 90%; background: linear-gradient(to right, rgb(0, 162, 255), rgb(86, 81, 81));padding: 20px; font-size: 1.2em; min-height: 100px; position: relative; margin: 2% auto; color='black''>"
+		// 					blogsHtml += singleBlog.val().anon
+        //                     blogsHtml += "<br><br> &copy; TAB 3 - KYCM &trade;"
+		// 				blogsHtml += "</p>"
+		// 			blogsHtml += "</div>"
+					
+		// 		});
+	
+				
+		// 	}
+		// });
+	
+	
+	</script>
+</body>
+</html>
